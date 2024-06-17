@@ -1,11 +1,9 @@
-const emailDetails = {
+export const emailDetails = {
   firstName: "Niket",
   lastName: "testing1",
   domainName: "gmail.com",
-  toBeGeneratedByAI: false,
+  toBeGeneratedByAI: true,
   uniqueFeature: "Testing this feature",
-  companyName: "Testing",
+  companyName: "Turing",
   jobRole: "Software Developer",
 };
-
-module.exports = emailDetails;
