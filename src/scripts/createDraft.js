@@ -105,7 +105,11 @@ const main = async () => {
   const lastName = emailDetails.lastName;
   const domain = emailDetails.domainName;
 
-  const emails = generateEmailPermutations(firstName, lastName, domain);
+  const emails = generateEmailPermutations(
+    firstName.toLowerCase(),
+    lastName.toLowerCase(),
+    domain.toLowerCase()
+  );
   const subject = emailBody.subject;
   let body = emailBody.body;
   const attachmentPath = process.env.ATTACHMENT_PATH;
