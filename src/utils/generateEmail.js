@@ -31,7 +31,7 @@ const generateEmail = async (emailBody, companyName) => {
         `,
       },
     ],
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o",
     response_model: {
       schema: emailSchema,
       name: "emailResponse",
