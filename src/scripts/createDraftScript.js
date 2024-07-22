@@ -1,19 +1,34 @@
 import { emailDetails } from "../data/variable.js";
-import { emailBody } from "../data/constant.js";
+import { createEmailBody } from "../data/constant.js";
 import generateEmail from "../utils/generateEmail.js";
 import generateEmailPermutations from "../utils/generateEmailPermutations.js";
 import createDraft from "../utils/createDraft.js";
 
 const main = async () => {
-  const firstName = emailDetails.firstName;
-  const lastName = emailDetails.lastName;
-  const domain = emailDetails.domainName;
+  const {
+    firstName,
+    lastName,
+    domainName,
+    toBeGeneratedByAI,
+    uniqueFeature,
+    companyName,
+    jobRole,
+  } = emailDetails;
 
   const emails = generateEmailPermutations(
     firstName.toLowerCase(),
     lastName.toLowerCase(),
-    domain.toLowerCase()
+    domainName.toLowerCase()
   );
+
+  const emailBody = createEmailBody({
+    firstName,
+    companyName,
+    toBeGeneratedByAI,
+    uniqueFeature,
+    jobRole,
+  });
+
   const subject = emailBody.subject;
   let body = emailBody.body;
   const attachmentPath = process.env.ATTACHMENT_PATH;

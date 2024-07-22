@@ -32,10 +32,15 @@ const makeBody = (to, from, subject, message, attachmentPath) => {
 
   str += `\r\n--${boundary}--`;
 
-  return Buffer.from(str)
-    .toString("base64")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_");
+  const readableContent = `To: ${to}\nFrom: ${from}\nSubject: ${subject}\n\n${message}`;
+
+  return {
+    raw: Buffer.from(str)
+      .toString("base64")
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_"),
+    readable: readableContent,
+  };
 };
 
 export default makeBody;

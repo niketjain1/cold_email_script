@@ -32,12 +32,15 @@ const createDraft = async (toEmails, subject, text, attachmentPath) => {
       userId: "me",
       requestBody: {
         message: {
-          raw: raw,
+          raw: raw.raw,
         },
       },
     });
 
-    return draft;
+    return {
+      draftData: draft.data,
+      emailContent: raw.readable,
+    };
   } catch (error) {
     console.log("Error creating draft:", error);
     throw error;
